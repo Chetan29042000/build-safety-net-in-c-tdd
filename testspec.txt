@@ -1,42 +1,50 @@
 Objective: To validate the generateSoundex function with multiple test cases that cover a variety of scenarios, including names with different consonants, vowels, special characters, and apostrophes, ensuring the function returns the correct 4-character Soundex code.
 
-Test Case 1: Common Name Soundex Conversion
-Input Name: "Robert"
-Expected Output: "R163"
+// Testcase 1: Common Name Soundex Conversion
+Testcase name : HandleCommonName
+Test Scenario: Verifies the Soundex conversion of a common name with standard consonants.
+Purpose: Ensure that a common name is correctly converted into its Soundex representation, including the appropriate translation of consonants into digits.
+  Input:           Expected Output:
+ "Robert"              "R163"
 
-Test Case 2: Name with Different Consonants Soundex Conversion
-Input Name: "Ashcraft"
-Expected Output: "A261"
+// Testcase 2: Name with Different Consonants Soundex Conversion
+Testcase name : HandleNameWithDifferentConsonants
+Test Scenario: Verifies the Soundex conversion of a name with different consonants across its letters.
+Purpose: Ensure that a name with a variety of consonants (non-repeated) is correctly converted, confirming that each consonant is mapped to its corresponding Soundex digit.
+  Input:           Expected Output:
+"Ashcraft"             "A261"
 
-Test Case 3: Single Character Name Soundex Conversion
-Input Name: "A"
-Expected Output: "A000"
+// Testcase 3: Single Character Name Soundex Conversion
+Testcase name : HandleSingleCharacterName
+Test Scenario: Verifies the Soundex conversion of a single-character name.
+Purpose: Ensure that a single character is handled properly by assigning it the correct initial letter and filling the rest with zeros.
+  Input:           Expected Output:
+   "A"                 "A000"
+// Testcase 4: Name Starting with a Vowel Soundex Conversion
+Testcase name : HandleNameStartingWithVowel
+Test Scenario: Verifies the Soundex conversion of a name that starts with a vowel.
+Purpose: Ensure that names starting with a vowel are processed correctly, and that consonants following the vowel are converted as per the Soundex rules.
+  Input:           Expected Output:
+ "Euler"               "E460"
 
-Test Case 4: Name Starting with a Vowel Soundex Conversion
-Input Name: "Euler"
-Expected Output: "E460"
+// Testcase 5: Short Name with No Changes Soundex Conversion
+Testcase name : HandleShortNameWithNoChanges
+Test Scenario: Verifies the Soundex conversion of a short name that should not change much due to its simplicity.
+Purpose: Ensure that short names that don’t contain complex consonant patterns are correctly filled with zeros after the first letter.
+  Input:           Expected Output:
+  "Lee"                "L000"
 
-Test Case 5: Short Name with No Changes in Soundex Conversion
-Input Name: "Lee"
-Expected Output: "L000"
+// Testcase 6: Name with Special Character '@' in Soundex Conversion
+Testcase name : HandleNameWithSpecialCharacter
+Test Scenario: Verifies the Soundex conversion of a name containing a special character.
+Purpose: Ensure that special characters such as @ are ignored and do not affect the conversion process of the name.
+  Input:           Expected Output:
+"B@rton"                "B635"
 
-Test Case 6: Name with Special Characters in Soundex Conversion
-Input Name: "B@rton"
-Expected Output: "B635"
 
-Test Case 7: Name with Repeating Letters in Soundex Conversion
-Input Name: "Addams"
-Expected Output: "A352"
-
-Test Procedures:
-Setup: Initialize a character array soundex[5] to store the generated Soundex code.
-Execution: For each test case, call the generateSoundex function with the given input name and store the result in soundex.
-Validation: Use ASSERT_STREQ to compare the generated Soundex code with the expected output for each test case.
-Result: Mark the test as Pass if the generated Soundex code matches the expected output. Otherwise, mark it as Fail.
-
-Expected Results:
-The generateSoundex function should correctly handle common names, names with vowels, special characters, and apostrophes.
-Names with fewer than 4 characters should be padded with zeros.
-Non-alphabetic characters should be ignored, while alphabetic characters should be processed according to the Soundex rules.
-The function should always return a 4-character Soundex code.
-
+// Testcase 7: Name with Repeating Letters Soundex Conversion
+Testcase name : HandleNameWithRepeatingLetters
+Test Scenario: Verifies the Soundex conversion of a name with repeating letters.
+Purpose: Ensure that repeated letters are compressed into a single occurrence in the Soundex conversion.
+  Input:           Expected Output:
+ "Addams"               "A352"
